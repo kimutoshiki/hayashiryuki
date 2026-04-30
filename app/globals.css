@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette — Japanese Modern */
+  --color-primary: #2D4A3E;
+  --color-primary-700: #213729;
+  --color-primary-300: #5b8071;
+  --color-accent: #C7884A;
+  --color-accent-700: #9d6932;
+  --color-cta: #B8460E;
+  --color-cta-700: #8c360a;
+  --color-base: #FAF7F2;
+  --color-surface: #FFFFFF;
+  --color-border: #E5DFD3;
+  --color-text: #1F1F1F;
+  --color-text-muted: #4A4A4A;
+  --color-ink: #1A1A1A;
+
+  /* Typography */
+  --font-serif: var(--font-noto-serif-jp), "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-sans: var(--font-noto-sans-jp), "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+  --font-en: var(--font-inter), system-ui, sans-serif;
+
+  /* Senior-friendly base text */
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.9;
+
+  /* Layout containers */
+  --container-prose: 45rem;
+  --container-page: 75rem;
+
+  /* Radii / shadow */
+  --radius-xl: 0.875rem;
+  --radius-2xl: 1.125rem;
+  --shadow-card: 0 6px 24px -12px rgba(26, 26, 26, 0.18);
+}
+
+:root {
+  color-scheme: light;
+  --background: var(--color-base);
+  --foreground: var(--color-text);
+  scroll-padding-top: 5rem;
+}
+
+html {
+  font-size: 1.0625rem;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--color-primary);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  z-index: 100;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 1rem; }
+
+/* Wood-grain CTA hover */
+@keyframes wood-grain-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.cta-wood {
+  background-image: linear-gradient(135deg, var(--color-cta), var(--color-cta-700) 60%, var(--color-cta));
+  background-size: 200% 100%;
+}
+.cta-wood:hover { animation: wood-grain-shift 2.4s ease-in-out infinite alternate; }
+@media (prefers-reduced-motion: reduce) {
+  .cta-wood:hover { animation: none; }
+}
+
+/* Asanoha pattern (decoration) */
+.bg-asanoha {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'><g fill='none' stroke='%23C7884A' stroke-width='0.6' opacity='0.18'><path d='M30 0 L60 17.3 L60 51.9 L30 60 L0 51.9 L0 17.3 Z'/><path d='M30 0 L30 60 M0 17.3 L60 51.9 M0 51.9 L60 17.3'/></g></svg>");
+  background-size: 60px 60px;
+}

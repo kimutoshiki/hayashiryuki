@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="wood" width="20" height="56" patternUnits="userSpaceOnUse">
+      <rect width="20" height="56" fill="#C7884A" opacity="0.1"/>
+      <path d="M0 12 Q10 6 20 12 M0 30 Q10 24 20 30 M0 46 Q10 40 20 46" stroke="#9d6932" stroke-width="0.6" fill="none" opacity="0.5"/>
+    </pattern>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FAF7F2"/>
+      <stop offset="1" stop-color="#E5DFD3"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#wood)" opacity="0.4"/>
+  <rect x="60" y="60" width="1080" height="510" fill="none" stroke="#2D4A3E" stroke-width="2" opacity="0.3"/>
+  <text x="600" y="220" text-anchor="middle" font-family="serif" font-size="46" font-weight="500" fill="#5b8071">KIT HOUSE BY FLEX KARATSU</text>
+  <text x="600" y="340" text-anchor="middle" font-family="serif" font-size="84" font-weight="700" fill="#2D4A3E">おやじの隠れ家</text>
+  <text x="600" y="430" text-anchor="middle" font-family="sans-serif" font-size="32" fill="#4A4A4A">純国産無垢材の高級木材キットハウス</text>
+  <text x="600" y="500" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#9d6932" letter-spacing="6">GOOD DESIGN AWARD 2014</text>
+</svg>
