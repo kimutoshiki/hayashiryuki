@@ -1,41 +1,53 @@
 import type { Metadata } from "next";
-import { Award, BookOpen, Newspaper, Cog } from "lucide-react";
+import { Award } from "lucide-react";
 import { PageShell } from "@/components/layout/PageShell";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { AssetImage } from "@/components/ui/AssetImage";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
   title: "メディア掲載・受賞",
   description:
-    "Garage Life誌での特集、東京モーターショー出展、新住宅ジャーナル、リフォーム経済新聞での掲載、グッドデザイン賞2014受賞。",
+    "テレビ・YouTube、Garage Life誌、モーターショー、住宅業界誌での紹介、そしてグッドデザイン賞2014受賞。「おやじの隠れ家」のメディア掲載実績をまとめてご紹介します。",
 };
 
-const mediaList = [
+const banners = [
   {
-    icon: BookOpen,
-    name: "Garage Life",
-    label: "雑誌特集（複数回）",
-    desc: "趣味のガレージ専門誌。実オーナーの暮らしと共に「おやじの隠れ家」を継続的に紹介。代表的な掲載に Garage Life 57（2013年10月号）長谷川様の事例特集。",
+    n: "01",
+    image: "/images/banner-01.png",
+    title: "テレビ、YouTubeチャンネルなどで多数紹介！",
+    body:
+      "ロンブー淳さんとインパルス板倉さんの番組を始め、『幸せボンビーガール』森泉さんのリフォームコーナーなど、テレビ番組やYouTubeでも紹介されています。",
   },
   {
-    icon: Cog,
-    name: "東京モーターショー",
-    label: "出展",
-    desc: "2013年・2015年に出展。車・バイク好きの来場者から多くの問い合わせをいただきました。",
+    n: "02",
+    image: "/images/banner-02.png",
+    title: "Garage Life誌 多数掲載！",
+    body:
+      "ガレージングを楽しむ男のための専門誌『Garage Life』。いつかこの雑誌に載っているようなガレージライフを送りたい — 「おやじの隠れ家」なら、その男の夢を実現できます。",
   },
   {
-    icon: Newspaper,
-    name: "新住宅ジャーナル",
-    label: "建築業界誌",
-    desc: "建築業界向けの専門誌で、独自の板倉工法とキットハウスの設計思想を紹介。",
+    n: "03",
+    image: "/images/banner-03.png",
+    title: "MOTOR SHOW へ展示出品！",
+    body:
+      "車好きが集まるイベントといえば、モーターショー。2009年福岡モーターショーに出展。『自分の居場所があるガレージ』として、ガレージ業界の常識を変え、車を眺める空間とガレージが一体化するカーライフを提案しました。",
   },
   {
-    icon: Newspaper,
-    name: "リフォーム経済新聞",
-    label: "業界紙",
-    desc: "国産無垢材を活かしたキットハウスの市場性と工法の解説記事に掲載。",
+    n: "04",
+    image: "/images/banner-04.png",
+    title: "住宅業界からもアツい視線！",
+    body:
+      "設計士さん・大工さんのファンも多い「おやじの隠れ家」。本体1日施工・288万円から・セルフビルドも可能でありながら、構造は日本古来の木造軸組。プロの心をくすぐるポイントは、極限まで無駄をそぎ落とした建築の美でした。",
+  },
+  {
+    n: "05",
+    image: "/images/banner-05.png",
+    title: "グッドデザイン賞 受賞！",
+    body:
+      "GOOD DESIGN AWARD は、国内外の多くの企業やデザイナーが参加するコンテスト。受賞のシンボルである「Gマーク」は、よいデザインを示すシンボルマークとして広く親しまれています。「おやじの隠れ家」も2014年に受賞いたしました。",
   },
 ] as const;
 
@@ -45,7 +57,7 @@ export default function MediaPage() {
       <PageHero
         eyebrow="Media & Awards"
         title="メディア掲載・受賞実績"
-        lead="趣味のガレージ専門誌から建築業界誌、業界紙、デザイン賞まで。第三者評価をいただいた実績の一部をご紹介します。"
+        lead="メディア・雑誌で人気急上昇中。テレビ番組から建築業界誌、グッドデザイン賞まで、第三者評価をいただいた実績をご紹介します。"
         crumbs={[
           { href: "/", label: "ホーム" },
           { href: "/media/", label: "メディア掲載" },
@@ -54,6 +66,56 @@ export default function MediaPage() {
 
       <section
         className="py-20 md:py-24"
+        aria-labelledby="banners-heading"
+      >
+        <Container>
+          <SectionHeading
+            eyebrow="Press Highlights"
+            title={<span id="banners-heading">メディア掲載ハイライト</span>}
+          />
+
+          <ul className="space-y-8 md:space-y-10" role="list">
+            {banners.map((b) => (
+              <li
+                key={b.n}
+                className="rounded-2xl border border-border bg-surface overflow-hidden shadow-card"
+              >
+                <AssetImage
+                  src={b.image}
+                  alt={`${b.n}：${b.title}`}
+                  className="w-full h-auto block bg-base"
+                  width={1200}
+                  height={400}
+                  fallback={
+                    <div className="w-full bg-base px-6 py-10 md:px-10 md:py-14 flex items-center gap-6">
+                      <span className="font-en text-5xl md:text-7xl font-bold text-border shrink-0">
+                        {b.n}
+                      </span>
+                      <div>
+                        <p className="text-accent-700 text-xs md:text-sm font-medium tracking-[0.2em] uppercase mb-2">
+                          メディア・雑誌で人気急上昇！
+                        </p>
+                        <p className="font-serif text-primary text-xl md:text-2xl leading-snug">
+                          {b.title}
+                        </p>
+                      </div>
+                    </div>
+                  }
+                />
+                <div className="p-6 md:p-8 border-t border-border">
+                  <h3 className="sr-only">
+                    {b.n} {b.title}
+                  </h3>
+                  <p className="text-text-muted leading-[1.95]">{b.body}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      <section
+        className="py-20 md:py-24 bg-surface border-y border-border"
         aria-labelledby="award-heading"
       >
         <Container>
@@ -69,47 +131,9 @@ export default function MediaPage() {
             </p>
             <p className="font-serif text-5xl md:text-6xl font-bold mb-4">2014</p>
             <p className="text-white/85 text-base md:text-lg leading-relaxed">
-              プロダクト／建築領域での受賞。<br className="hidden sm:block" />
-              「短工期で美しく、長く使える木の家」が評価されました。
+              「短工期で美しく、長く使える木の家」が評価された受賞作品です。
             </p>
           </div>
-        </Container>
-      </section>
-
-      <section
-        className="py-20 md:py-24 bg-surface border-y border-border"
-        aria-labelledby="media-list-heading"
-      >
-        <Container>
-          <SectionHeading
-            eyebrow="Press"
-            title={<span id="media-list-heading">主なメディア掲載</span>}
-          />
-          <ul className="grid gap-5 md:gap-6 md:grid-cols-2" role="list">
-            {mediaList.map((m) => {
-              const Icon = m.icon;
-              return (
-                <li
-                  key={m.name}
-                  className="rounded-2xl border border-border bg-base p-7 md:p-8 flex gap-4"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="shrink-0 w-12 h-12 rounded-full bg-accent/15 text-accent inline-flex items-center justify-center"
-                  >
-                    <Icon size={22} />
-                  </span>
-                  <div>
-                    <p className="text-xs text-accent-700 tracking-[0.18em] uppercase font-medium mb-1">
-                      {m.label}
-                    </p>
-                    <h3 className="font-serif text-primary text-xl mb-2">{m.name}</h3>
-                    <p className="text-text-muted text-sm leading-[1.85]">{m.desc}</p>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
         </Container>
       </section>
 

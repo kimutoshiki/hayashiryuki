@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { AssetImage } from "@/components/ui/AssetImage";
 import { navItems } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -53,10 +54,26 @@ export function Header() {
       <div className="mx-auto w-full max-w-[75rem] px-5 sm:px-8 flex items-center justify-between gap-4">
         <Link
           href="/"
-          className="font-serif font-bold text-primary text-lg sm:text-xl tracking-wide whitespace-nowrap"
+          className="inline-flex items-center whitespace-nowrap"
           aria-label="おやじの隠れ家 トップへ"
         >
-          おやじの<span className="text-accent">隠れ家</span>
+          <AssetImage
+            src="/images/head_logo.png"
+            alt="おやじの隠れ家 — Let's START! Garage Life"
+            className={cn(
+              "object-contain transition-all w-auto",
+              scrolled ? "h-9 sm:h-10" : "h-10 sm:h-12",
+            )}
+            width={220}
+            height={75}
+            loading="eager"
+            fetchPriority="high"
+            fallback={
+              <span className="font-serif font-bold text-primary text-lg sm:text-xl tracking-wide">
+                おやじの<span className="text-accent">隠れ家</span>
+              </span>
+            }
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-6" aria-label="メインナビゲーション">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
 import { PageHero } from "@/components/sections/PageHero";
+import { BrochurePromo } from "@/components/sections/BrochurePromo";
 import { ContactForm } from "@/components/sections/ContactForm";
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function ContactPage() {
           { href: "/contact/", label: "資料請求" },
         ]}
       />
+      <BrochurePromo />
       <ContactForm />
     </PageShell>
   );

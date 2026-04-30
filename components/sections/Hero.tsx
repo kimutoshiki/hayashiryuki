@@ -1,6 +1,7 @@
 import { Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { AssetImage } from "@/components/ui/AssetImage";
 
 export function Hero() {
   return (
@@ -17,7 +18,7 @@ export function Hero() {
 
       <Container className="relative">
         <div className="grid gap-12 md:gap-16 md:grid-cols-12 items-center">
-          <div className="md:col-span-7">
+          <div className="md:col-span-6">
             <p className="text-accent-700 font-medium tracking-[0.2em] text-sm md:text-base mb-6">
               KIT HOUSE BY FLEX KARATSU
             </p>
@@ -28,7 +29,7 @@ export function Hero() {
               趣味のセカンドハウスが、欲しかった。
             </h1>
             <p className="text-text-muted text-lg leading-[1.95] max-w-xl mb-10">
-              日本の木でつくる、自分だけの隠れ家。純国産無垢材の高級木材キットハウス。
+              純国産でオール無垢素材の体にやさしい木製キットガレージが、たった1日で、288万円〜建てられます。
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
@@ -49,45 +50,57 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="md:col-span-5">
-            <div className="relative aspect-[4/5] rounded-2xl bg-primary/5 border border-border shadow-card overflow-hidden">
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/5 to-cta/10"
+          <div className="md:col-span-6">
+            <figure className="relative rounded-2xl border border-border shadow-card overflow-hidden bg-primary/5">
+              <AssetImage
+                src="/images/hero-main.jpg"
+                alt="天然素材に囲まれたコンパクトな贅沢空間。完成したおやじの隠れ家とオーナー様。"
+                className="w-full h-auto aspect-[4/3] object-cover"
+                width={1000}
+                height={750}
+                loading="eager"
+                fetchPriority="high"
+                fallback={
+                  <svg
+                    role="img"
+                    aria-label="木造ガレージ・キットハウスのイメージ"
+                    viewBox="0 0 400 300"
+                    className="w-full h-auto aspect-[4/3]"
+                  >
+                    <defs>
+                      <pattern id="wood" width="14" height="40" patternUnits="userSpaceOnUse">
+                        <rect width="14" height="40" fill="#C7884A" opacity="0.15" />
+                        <path
+                          d="M0 8 Q7 4 14 8 M0 22 Q7 18 14 22 M0 32 Q7 28 14 32"
+                          stroke="#9d6932"
+                          strokeWidth="0.5"
+                          fill="none"
+                          opacity="0.6"
+                        />
+                      </pattern>
+                    </defs>
+                    <rect width="400" height="300" fill="#FAF7F2" />
+                    <rect x="0" y="0" width="400" height="160" fill="#e8e2d4" />
+                    <polygon points="50,140 200,55 350,140" fill="#2D4A3E" />
+                    <rect x="70" y="140" width="260" height="120" fill="url(#wood)" />
+                    <rect
+                      x="70"
+                      y="140"
+                      width="260"
+                      height="120"
+                      fill="none"
+                      stroke="#9d6932"
+                      strokeWidth="2"
+                    />
+                    <rect x="110" y="170" width="180" height="90" fill="#1F1F1F" opacity="0.85" rx="4" />
+                    <rect x="0" y="260" width="400" height="40" fill="#E5DFD3" />
+                  </svg>
+                }
               />
-              <svg
-                role="img"
-                aria-label="木造ガレージ・キットハウスのイメージ"
-                viewBox="0 0 400 500"
-                className="absolute inset-0 w-full h-full"
-              >
-                <defs>
-                  <pattern id="wood" width="14" height="40" patternUnits="userSpaceOnUse">
-                    <rect width="14" height="40" fill="#C7884A" opacity="0.15" />
-                    <path d="M0 8 Q7 4 14 8 M0 22 Q7 18 14 22 M0 32 Q7 28 14 32" stroke="#9d6932" strokeWidth="0.5" fill="none" opacity="0.6" />
-                  </pattern>
-                </defs>
-                <rect width="400" height="500" fill="#FAF7F2" />
-                {/* sky */}
-                <rect x="0" y="0" width="400" height="280" fill="#e8e2d4" />
-                {/* roof */}
-                <polygon points="50,200 200,90 350,200" fill="#2D4A3E" />
-                <polygon points="60,210 200,110 340,210" fill="#213729" />
-                {/* facade */}
-                <rect x="70" y="200" width="260" height="220" fill="url(#wood)" />
-                <rect x="70" y="200" width="260" height="220" fill="none" stroke="#9d6932" strokeWidth="2" />
-                {/* garage door */}
-                <rect x="100" y="240" width="200" height="170" fill="#1F1F1F" opacity="0.85" rx="4" />
-                <line x1="100" y1="280" x2="300" y2="280" stroke="#3a3a3a" strokeWidth="2" />
-                <line x1="100" y1="320" x2="300" y2="320" stroke="#3a3a3a" strokeWidth="2" />
-                <line x1="100" y1="360" x2="300" y2="360" stroke="#3a3a3a" strokeWidth="2" />
-                {/* ground */}
-                <rect x="0" y="420" width="400" height="80" fill="#E5DFD3" />
-              </svg>
-              <div className="absolute bottom-4 left-4 right-4 px-4 py-3 rounded-xl bg-surface/95 text-xs text-text-muted">
-                ※ 仮配置のイラスト。実装時は施工事例写真と差し替えてください。
-              </div>
-            </div>
+              <figcaption className="absolute bottom-4 left-4 right-4 px-4 py-3 rounded-xl bg-surface/95 text-sm text-text font-medium text-center backdrop-blur-sm">
+                「正直、こんな隠れ家ほしかった！」
+              </figcaption>
+            </figure>
           </div>
         </div>
       </Container>
